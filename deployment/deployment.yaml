@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-pautas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-pautas
+  template:
+    spec:
+      containers:
+        - name: ms-pautas
+          image: leoalmeida/ms-pautas:{{IMAGE_TAG}}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "2"
